@@ -1,18 +1,100 @@
-# terraform-aws-module-template
+![Module Structure](./static/ecs-banner.png)
+
+# [terraform-aws-arc-ec2-autoscale-group](https://github.com/sourcefuse/terraform-aws-arc-ec2-autoscale-group)
+
+<a href="https://github.com/sourcefuse/terraform-aws-arc-ec2-autoscale-group/releases/latest"><img src="https://img.shields.io/github/release/sourcefuse/terraform-aws-arc-ec2-autoscale-group.svg?style=for-the-badge" alt="Latest Release"/></a> <a href="https://github.com/sourcefuse/terraform-aws-arc-ec2-autoscale-group/commits"><img src="https://img.shields.io/github/last-commit/sourcefuse/terraform-aws-arc-ec2-autoscale-group.svg?style=for-the-badge" alt="Last Updated"/></a> ![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=sourcefuse_terraform-aws-arc-ec2-autoscale-group&token=d2a98006c7439f12118f086a79a8c2af526712ca)](https://sonarcloud.io/summary/new_code?id=sourcefuse_terraform-aws-arc-ec2-autoscale-group)
+
+[![Known Vulnerabilities](https://github.com/sourcefuse/terraform-aws-arc-ec2-autoscale-group/actions/workflows/snyk.yaml/badge.svg)](https://github.com/sourcefuse/terraform-aws-arc-ec2-autoscale-group/actions/workflows/snyk.yaml)
 
 ## Overview
 
-SourceFuse AWS Reference Architecture (ARC) Terraform module for managing _________.
+SourceFuse's AWS Reference Architecture Terraform module leverages the terraform-aws-modules/terraform-aws-arc-ec2-autoscale-group GitHub repository to enable streamlined provisioning and management of EC2 Auto Scaling Groups. This module facilitates dynamic scaling of EC2 instances based on demand, ensuring high availability and cost efficiency for workloads. It supports customizable launch templates, instance profiles, and scaling policies, allowing flexible configuration tailored to diverse application needs. Integrated with CloudWatch monitoring and load balancing options, the module ensures resilient and performant infrastructure on AWS.
 
-## Usage
+### Prerequisites
+Before using this module, ensure you have the following:
 
-To see a full example, check out the [main.tf](./example/main.tf) file in the example folder.  
+- AWS credentials configured.
+- Terraform installed.
+- A working knowledge of Terraform.
+- Network
+
+
+## Getting Started
+
+1. **Define the Module**
+
+Initially, it's essential to define a Terraform module, which is organized as a distinct directory encompassing Terraform configuration files. Within this module directory, input variables and output values must be defined in the variables.tf and outputs.tf files, respectively. The following illustrates an example directory structure:
+
+
+```plaintext
+ecs/
+|-- main.tf
+|-- variables.tf
+|-- outputs.tf
+```
+
+2. **Define Input Variables**
+
+Inside the `variables.tf` or in `*.tfvars` file, you should define values for the variables that the module requires.
+
+3. **Use the Module in Your Main Configuration**
+In your main Terraform configuration file (e.g., main.tf), you can use the module. Specify the source of the module, and version, For Example
+
 
 ```hcl
-module "this" {
-  source = "git::https://github.com/sourcefuse/terraform-aws-refarch-<module_name>"
+module "asg" {
+  source                           = "sourcefuse/arc-ec2-autoscale-group/aws"
+  version = "0.0.1"
+  launch_template                  = local.launch_template
+  asg                              = local.asg_config
+  security_group_data              = local.security_group_data
+  security_group_name              = local.security_group_name
+  vpc_id                           = data.aws_vpc.default.id
+  autoscaling_notification_enabled = local.autoscaling_notification_enabled
+  autoscaling_notification_types   = local.autoscaling_notification_types
+  autoscaling_sns_topic_arn        = local.autoscaling_sns_topic_arn
+  schedules                        = local.schedules
+  autoscaling_policy               = local.autoscaling_policy
+  predictive_scaling_configuration = local.predictive_scaling_configuration
+  create_autoscaling_attachment    = local.create_autoscaling_attachment
+  autoscaling_attachments          = local.autoscaling_attachments
+  instance_profile_name            = local.instance_profile_name
+  tags                             = module.tags.tags
 }
 ```
+
+4. **Output Values**
+
+Inside the `outputs.tf` file of the module, you can define output values that can be referenced in the main configuration. For example:
+
+```hcl
+output "name" {
+  description = "Name of the Auto Scaling Group"
+  value       = module.asg.name
+}
+
+output "asg_arn" {
+  description = "ARN of the Auto Scaling Group"
+  value       = module.asg.asg_arn
+}
+
+```
+
+5. **Execute Terraform Commands**
+
+After defining your main configuration, navigate to the directory containing your Terraform files and run the following commands:
+
+
+```bash
+terraform init
+terraform apply
+```
+
+6. **Review and Confirm**
+
+Terraform will display a plan showing the changes it intends to make. Review the plan and confirm by typing 'yes' when prompted.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -129,7 +211,7 @@ By specifying this , it will bump the version and if you don't specify this in y
 - Configure the dependencies
   ```sh
   cd test/
-  go mod init github.com/sourcefuse/terraform-aws-refarch-<module_name>
+  go mod init github.com/sourcefuse/terraform-aws-refarch-ec2-autoscale-group
   go get github.com/gruntwork-io/terratest/modules/terraform
   ```
 - Now execute the test  
