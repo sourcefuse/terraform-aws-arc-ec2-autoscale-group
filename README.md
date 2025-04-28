@@ -1,4 +1,4 @@
-![Module Structure](./static/ecs-banner.png)
+![Module Structure](./static/asg-banner.png)
 
 # [terraform-aws-arc-ec2-autoscale-group](https://github.com/sourcefuse/terraform-aws-arc-ec2-autoscale-group)
 
@@ -29,7 +29,7 @@ Initially, it's essential to define a Terraform module, which is organized as a 
 
 
 ```plaintext
-ecs/
+asg/
 |-- main.tf
 |-- variables.tf
 |-- outputs.tf
@@ -45,8 +45,9 @@ In your main Terraform configuration file (e.g., main.tf), you can use the modul
 
 ```hcl
 module "asg" {
-  source                           = "sourcefuse/arc-ec2-autoscale-group/aws"
-  version = "0.0.1"
+  source        = "sourcefuse/arc-ec2-autoscale-group/aws"
+  version       = "0.0.1"
+  
   launch_template                  = local.launch_template
   asg                              = local.asg_config
   security_group_data              = local.security_group_data
