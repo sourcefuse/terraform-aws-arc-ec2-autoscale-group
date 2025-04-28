@@ -54,7 +54,6 @@ output "enabled_metrics" {
   value       = aws_autoscaling_group.this.enabled_metrics
 }
 
-
 output "iam_instance_profile_arn" {
   description = "ARN of the IAM instance profile"
   value       = aws_iam_instance_profile.this.arn

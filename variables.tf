@@ -492,7 +492,6 @@ variable "autoscaling_policy" {
   default = {}
 }
 
-
 variable "predictive_scaling_configuration" {
   description = "Predictive scaling configuration"
   type = object({

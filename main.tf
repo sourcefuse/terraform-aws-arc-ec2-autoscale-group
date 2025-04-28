@@ -30,7 +30,6 @@ module "arc_security_group" {
 ################################################################################
 # EC2 Launch Template
 ################################################################################
-
 resource "aws_launch_template" "this" {
 
   name        = var.launch_template.name
