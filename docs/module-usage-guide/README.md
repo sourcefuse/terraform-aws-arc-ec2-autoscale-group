@@ -93,8 +93,8 @@ For basic usage, see the [example]() folder.
 
 This example will create:
 
-- 
-- 
+- launch template
+- EC2 Auto Scaling Group
 
 ### Tips and Recommendations
 
@@ -136,4 +136,3 @@ This module is licensed under the Apache 2.0 license. Refer to the [LICENSE](htt
 ### Open Source Contribution
 
 Contribute to open source by using and enhancing this module. Your contributions are welcome!
-
