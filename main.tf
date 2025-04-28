@@ -12,7 +12,7 @@ terraform {
   }
 }
 ###################################################################
-#                 Security Group
+#                Security Group
 ###################################################################
 module "arc_security_group" {
   source  = "sourcefuse/arc-security-group/aws"
