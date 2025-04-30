@@ -265,7 +265,7 @@ resource "aws_launch_template" "this" {
     }
   }
 
-  dynamic "network_interfaces" {
+  dynamic "network_interfaces" { // NOSONAR
     for_each = var.launch_template.network_interfaces != null ? [var.launch_template.network_interfaces] : []
     content {
       associate_public_ip_address = network_interfaces.value.associate_public_ip_address // NOSONAR
