@@ -98,7 +98,7 @@ This example will create:
 
 ### Tips and Recommendations
 
-- This module provisions EC2 Auto Scaling Groups with robust support for custom launch templates, instance profiles, scaling policies, and health checks. Built using a convention-based approach, it integrates seamlessly with other ARC infrastructure components such as ALBs, VPCs, and security groups. The module also offers optional configurations for CloudWatch metrics and alarms, enabling visibility into instance health and scaling activity. Users can fine-tune instance types, desired capacity, and scaling strategies to match workload requirements and cost considerations. Additionally, it supports tagging and lifecycle hooks to facilitate autoscaling-aware applications and ensure smooth instance termination during scale-in events.
+- This module provisions EC2 Auto Scaling Groups with robust support for custom launch templates, instance profiles, scaling policies, and health checks. Built using a convention-based approach, it integrates seamlessly with other ARC infrastructure components such as ALBs, VPCs, and security groups. The module also offers optional configurations for CloudWatch metrics, enabling visibility into instance health and scaling activity. Users can fine-tune instance types, desired capacity, and scaling strategies to match workload requirements and cost considerations. Additionally, it supports tagging and lifecycle hooks to facilitate autoscaling-aware applications and ensure smooth instance termination during scale-in events.
 
 ## Troubleshooting
 

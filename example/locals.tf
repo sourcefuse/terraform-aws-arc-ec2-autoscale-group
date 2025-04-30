@@ -7,7 +7,7 @@ locals {
     ingress_rules = [
       {
         description = "Allow VPC traffic"
-        cidr_block  = "0.0.0.0/0" # Changed to string
+        cidr_block  = "0.0.0.0/0"
         from_port   = 0
         ip_protocol = "tcp"
         to_port     = 443
@@ -23,7 +23,7 @@ locals {
     egress_rules = [
       {
         description = "Allow all outbound traffic"
-        cidr_block  = "0.0.0.0/0" # Changed to string
+        cidr_block  = "0.0.0.0/0"
         from_port   = -1
         ip_protocol = "-1"
         to_port     = -1
@@ -34,7 +34,7 @@ locals {
   launch_template = {
     name          = "my-launch-template"
     description   = "Example launch template for EC2"
-    image_id      = data.aws_ami.amazon_linux.id # Replace with a valid AMI ID
+    image_id      = data.aws_ami.amazon_linux.id
     instance_type = "t3.micro"
 
     user_data = <<-EOT
