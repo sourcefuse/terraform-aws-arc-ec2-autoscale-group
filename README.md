@@ -47,7 +47,7 @@ In your main Terraform configuration file (e.g., main.tf), you can use the modul
 module "asg" {
   source        = "sourcefuse/arc-ec2-autoscale-group/aws"
   version       = "0.0.1"
-  
+
   launch_template                  = local.launch_template
   asg                              = local.asg_config
   security_group_data              = local.security_group_data
