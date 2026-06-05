@@ -19,7 +19,12 @@
 
 [![Quality Gate](https://sonarcloud.io/api/project_badges/quality_gate?project=sourcefuse_terraform-aws-arc-ec2-autoscale-group&token=d2a98006c7439f12118f086a79a8c2af526712ca)](https://sonarcloud.io/summary/new_code?id=sourcefuse_terraform-aws-arc-ec2-autoscale-group)
 
+
 ## Overview
+
+## Architecture
+
+![Architecture Diagram](./static/arch.png)
 
 SourceFuse's AWS Reference Architecture Terraform module leverages the terraform-aws-modules/terraform-aws-arc-ec2-autoscale-group GitHub repository to enable streamlined provisioning and management of EC2 Auto Scaling Groups. This module facilitates dynamic scaling of EC2 instances based on demand, ensuring high availability and cost efficiency for workloads. It supports customizable launch templates, instance profiles, and scaling policies, allowing flexible configuration tailored to diverse application needs. Integrated with CloudWatch monitoring and load balancing options, the module ensures resilient and performant infrastructure on AWS.
 
@@ -42,6 +47,44 @@ Before using this module, ensure you have the following:
 - Mixed instance policy for Spot/On-Demand blending
 
 For more information about this repository and its usage, please see [Terraform AWS EC2 AUTOSCALING GROUP Usage Guide](https://github.com/sourcefuse/terraform-aws-arc-ec2-autoscale-group/blob/main/docs/module-usage-guide/README.md).
+
+## Architecture
+
+![Architecture Diagram](./static/architecture.png)
+
+The module deploys the following components:
+
+1. **Auto Scaling Group**
+   - Spans multiple Availability Zones for high availability
+   - Configurable min/max/desired capacity
+   - Automatic scaling based on CloudWatch metrics
+   - Instance refresh for zero-downtime deployments
+
+2. **Launch Template**
+   - Defines EC2 instance configuration (AMI, instance type, user data)
+   - Security group attachments
+   - IAM instance profile for AWS service access
+   - EBS volume configurations
+
+3. **Application Load Balancer Integration**
+   - Target group attachment for distributing traffic
+   - Health check configuration
+   - Multi-AZ load balancing
+
+4. **CloudWatch Monitoring**
+   - Metric-based scaling alarms
+   - Custom and predefined metrics support
+   - Target tracking and step scaling policies
+
+5. **SNS Notifications**
+   - Auto Scaling lifecycle events
+   - Instance launch/terminate notifications
+   - Integration with alerting systems
+
+6. **IAM Role & Instance Profile**
+   - Least-privilege access to AWS services
+   - Automatic role attachment to instances
+   - Support for custom policy attachments
 
 ## Quickstart
 1. **Define the Module**
