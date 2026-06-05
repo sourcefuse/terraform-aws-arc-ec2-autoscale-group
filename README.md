@@ -80,22 +80,6 @@ module "asg" {
 }
 ```
 
-## Required Inputs
-
-| Name | Type | Description |
-|------|------|-------------|
-| `namespace` | `string` | Namespace prefix |
-| `environment` | `string` | Deployment environment |
-## Key Outputs
-
-| Name | Description |
-|------|-------------|
-| `autoscaling_group_id` | Auto Scaling Group ID |
-| `autoscaling_group_arn` | Auto Scaling Group ARN |
-## Full Variable & Output Reference
-
-The complete inputs/outputs reference is auto-generated below.
-
 4. **Output Values**
 
 Inside the `outputs.tf` file of the module, you can define output values that can be referenced in the main configuration. For example:
@@ -127,6 +111,21 @@ terraform apply
 
 Terraform will display a plan showing the changes it intends to make. Review the plan and confirm by typing 'yes' when prompted.
 
+## Required Inputs
+
+| Name | Type | Description |
+|------|------|-------------|
+| `namespace` | `string` | Namespace prefix |
+| `environment` | `string` | Deployment environment |
+## Key Outputs
+
+| Name | Description |
+|------|-------------|
+| `autoscaling_group_id` | Auto Scaling Group ID |
+| `autoscaling_group_arn` | Auto Scaling Group ARN |
+## Full Variable & Output Reference
+
+The complete inputs/outputs reference is auto-generated below.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
