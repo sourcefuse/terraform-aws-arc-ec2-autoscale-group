@@ -17,6 +17,9 @@
 
 [![Quality Gate](https://sonarcloud.io/api/project_badges/quality_gate?project=sourcefuse_terraform-aws-arc-ec2-autoscale-group&token=d2a98006c7439f12118f086a79a8c2af526712ca)](https://sonarcloud.io/summary/new_code?id=sourcefuse_terraform-aws-arc-ec2-autoscale-group)
 
+> [!TIP]
+> 🤖 **New:** Use this module with AI assistants via the [ARC IaC MCP Server](https://github.com/sourcefuse/arc-iac-mcp) — search, scaffold, and security-scan ARC modules from natural language. [Quick setup ↓](#ai-assistant-integration-arc-iac-mcp)
+
 ## Overview
 
 Creates EC2 Auto Scaling Groups with launch templates, scaling policies, CloudWatch alarms, and optional load balancer attachment.
